@@ -20,23 +20,22 @@ if(isset($submit))
 {
 	if($uname =="" || $email =="")	
 	{
-		echo "fill your name and email first";
+		echo "please fill in your name and email";
 	}
 	else
 {
-	$result = mysqli_query($connect,"SELECT * FROM reg where email='$email'");
+	$result = mysqli_query($connect,"SELECT * FROM reg where email='$email'");// 'reg'- register table name in db
 	$row = mysqli_fetch_array($result);
 	$fid = $row['name'];
 	$femail = $row['email'];
+	//check login details
 	if($fid == $uname && $femail  == $email)
 	{
-		echo "\nlogged in";
-		//$_SESSION['sid']=$_POST['name'];
-		//header('location:HomePage.php');
+		echo "\nLogin successfull";
 	}
 	else
 	{
-		echo "\ninvalid id or pass";
+		echo "\nLogin unsuccessfull, Invalid uesr name or email";
 	}
 }
 }
